@@ -20,12 +20,25 @@
   
     return unrealizedProfit;
   }
+
+  var sum = function (acc, x) { return acc + x; };
   
   $(document).ready(function () {
+    var stocksMarketValues = [];
+    var stocksUnrealizedProfits = [];
+
     $('tbody tr').each(function (i, ele) {
       var marketValue = updateMarketValue(ele);
+      stocksMarketValues.push(marketValue);
+      var unrealizedProfit = updateUnrealizedProfit(ele, marketValue);
+      stocksUnrealizedProfits.push(unrealizedProfit);
       updateUnrealizedProfit(ele, marketValue);
     });
+
+    var portfolioMarketValue = stocksMarketValues.reduce(sum);
+    var portfolioUnrealizedProfit = stocksUnrealizedProfits.reduce(sum);
+    console.log(portfolioMarketValue);
+    console.log(portfolioUnrealizedProfit);
   });
   
   // Feetbook
