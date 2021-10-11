@@ -37,9 +37,16 @@
     $('#portfolioValue').html(portfolioMarketValue);
     $('#portfolioProfit').html(portfolioUnrealizedProfit);
   }
-  
+
   $(document).ready(function () {
     updatePortfolioValueAndProfit();
+
+    $('.btn.remove').on('click', function (event) {
+        $(this).closest('tr').remove();
+        // $(this).parent().parent().remove();
+        // The above also works
+        updatePortfolioValueAndProfit();
+    });
   });
   
   // Feetbook
